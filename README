@@ -1,0 +1,49 @@
+**************************************************************
+*                         exif2ogr                           *
+**************************************************************
+
+convert the coordinates stored geotagged photos to formats 
+supported by the OGR library
+
+
+Dependencies
+************
+
+-	Python
+	http://www.python.org
+
+- 	exiv2 library
+	http://www.exiv2.org
+
+-	pyexiv2 - python-bindings for the exiv2-library
+	http://tilloy.net/dev/pyexiv2
+
+-	OGR-library and python-bindings
+	This library is part of the GDAL-library
+	http://www.gdal.org/ogr
+
+-	GMP-library
+	http://gmplib.org
+
+-	gmpy - python bindings for the GMP-library
+	http://gmpy.sourceforge.net
+
+
+Command line arguments
+**********************
+
+For an overview of the command line arguments use 
+exif2ogr.py --help
+
+
+Examples
+********
+
+Create a KML file with the locations of the photos from the 
+trip-photos directory
+> exif2ogr.py -f "KML" -o trip_locations.kml trip_photos/
+
+
+Create a table "biketrip" in the existing postgis-database "geodb"
+with the photos from the directory "biking"
+> exif2ogr.py -f "PostgreSQL" -o "PG:dbname=geodb" -l "biketrip" biking/
